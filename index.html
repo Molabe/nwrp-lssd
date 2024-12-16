@@ -16,22 +16,36 @@
             color: #333;
         }
         .hero {
-            background: url('./images/background.png') no-repeat center center/cover;
+            position: relative;
+            background: url('images/background.png') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding: 150px 20px;
             background-attachment: fixed;
-            background-blur: 10px;
             box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
         }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            z-index: -1; /* Position the overlay behind the text */
+        }
+
         .hero h1 {
             font-size: 4rem;
             text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.6);
         }
+
         .hero p {
             font-size: 1.25rem;
             margin-top: 10px;
         }
+
         .hero .btn {
             background-color: #FFDD00;
             color: #2E3B2D;
@@ -39,11 +53,13 @@
             padding: 10px 30px;
             font-size: 1.2rem;
         }
+
         .hero .btn:hover {
             background-color: #FBC900;
             color: white;
             transition: all 0.3s ease;
         }
+
         nav {
             background-color: #2E3B2D;
             position: sticky;
@@ -108,7 +124,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="home.html">
-            <img src="./images/LSSD.webp" alt="LSSD Logo" width="40" class="me-2">
+            <img src="images/LSSD.webp" alt="LSSD Logo" width="40" class="me-2">
             LSSD
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -181,16 +197,19 @@
             <div class="alert alert-info">
                 <h5>Nový prírastok do našich radov!</h5>
                 <p>Radosťou oznamujeme, že sme prijali nových členov do našich radov! Tešíme sa na ich pomoc pri zabezpečovaní bezpečnosti našich občanov.</p>
+                <small class="text-muted">Dátum a čas: 16. december 2024, 14:00</small> <!-- Event date and time -->
             </div>
         </div>
         <div class="col-md-6">
             <div class="alert alert-warning">
                 <h5>Bezpečnostná akcia v Los Santos</h5>
                 <p>Pripravujeme veľkú bezpečnostnú akciu v meste. Viac informácií čoskoro.</p>
+                <small class="text-muted">Dátum a čas: 18. december 2024, 10:00</small> <!-- Event date and time -->
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Mapa -->
 <div class="container py-5">
@@ -223,7 +242,7 @@
 
     // Marker na Sandy Shores Police Station
     const marker = L.marker([34.0117, -116.8463]).addTo(map);
-    marker.bindPopup("<b>Sandy Shores Police Station</b><br>Los Santos Sheriff's Department.");
+    marker.bindPopup("<b>Sandy Shores Sheriff Station</b><br>Los Santos Sheriff's Department.");
 </script>
 </body>
 </html>
