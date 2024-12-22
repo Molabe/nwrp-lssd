@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Los Santos Sheriff's Department: Serving, protecting, and supporting our community. Learn more about our services, mission, and career opportunities.">
+
     <title>Los Santos Sheriff's Department - Domov</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -116,6 +119,72 @@
             font-size: 1.2rem;
             color: #555;
         }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            text-transform: uppercase;
+            color: grey;
+        }
+        ul li {
+            padding: 0 .5em .25em;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: .3s;
+        }
+        ul li:hover {
+            color: #fff;
+        }
+        ul li:before {
+            content: "";
+            position: absolute;
+            inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
+            background: #ce4f20; /* the color */
+            scale: 0 1;
+            transition: .3s, translate 0s .3s;
+        }
+        ul:hover li:before {
+            scale: 1;
+        }
+        ul li:hover:before {
+            translate: 0;
+            transition: .3s;
+        }
+        ul:hover li:has(~ li:hover):before {
+            translate: 100% 0;
+            transition: .2s .2s,scale 0s .4s;
+        }
+        ul:hover li:hover ~ li:before {
+            translate: -100% 0;
+            transition: .2s .2s,scale 0s .4s;
+        }
+        ul:hover li:hover ~ li:hover ~ li:before {
+            translate: 0 0;
+            transition: .2s .2s,scale 0s .4s;
+        }
+        ul:hover li:hover ~ li:hover ~ li:hover ~ li:before {
+            translate: 100% 0;
+            transition: .2s .2s,scale 0s .4s;
+        }
+
+        ul li a.active {
+            position: relative;
+            color: #fff; /* Ak chcete zmeniť farbu textu pre aktívnu položku */
+        }
+
+        ul li a.active:before {
+            content: "";
+            position: absolute;
+            inset: calc(100% - 3px) 0 0 0; /* 3px = hrúbka */
+            background: #ce4f20; /* farba čiary */
+            scale: 1 1; /* Viditeľná čiara */
+            transition: .3s;
+        }
+
+
     </style>
 </head>
 <body>
@@ -132,11 +201,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="home.html">Domov</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">O nás</a></li>
-                <li class="nav-item"><a class="nav-link" href="services.html">Služby</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Kontakt</a></li>
-                <li class="nav-item"><a class="nav-link" href="careers.html">Kariéra</a></li>
+                <li class="nav-item"><a class="nav-link active" href="home.html">DOMOV</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">VAŠE LSSD</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">NOVINKY</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">KARIÉRA</a></li>
+                <li class="nav-item"><a class="nav-link" href="careers.html">KONTAKTUJTE NÁS</a></li>
             </ul>
         </div>
     </div>
@@ -222,27 +291,22 @@
 <footer>
     <p>&copy; 2024 Los Santos Sheriff's Department. Všetky práva vyhradené.</p>
     <p>
-        <a href="#privacy">Ochrana súkromia</a> | <a href="#terms">Podmienky používania</a>
+        <a href="privacy.html">Ochrana osobných údajov</a> |
+        <a href="terms.html">Podmienky používania</a> |
+        <a href="https://facebook.com/LSSD" target="_blank">Facebook</a> |
+        <a href="https://twitter.com/LSSD" target="_blank">Twitter</a>
     </p>
 </footer>
+
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-    // Inicializácia mapy
-    const map = L.map('map').setView([34.0117, -116.8463], 15); // GPS pozícia Sandy Shores
-
-    // Pridanie vrstvy mapy
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Marker na Sandy Shores Police Station
-    const marker = L.marker([34.0117, -116.8463]).addTo(map);
-    marker.bindPopup("<b>Sandy Shores Sheriff Station</b><br>Los Santos Sheriff's Department.");
+    var map = L.map('map').setView([34.0511, -118.243], 13); // Example coordinates
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    L.marker([34.0511, -118.243]).addTo(map).bindPopup('LSSD Headquarters').openPopup();
 </script>
 </body>
 </html>
