@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Los Santos Sheriff's Department: Serving, protecting, and supporting our community. Learn more about our services, mission, and career opportunities.">
+    <meta name="description" content="Los Santos Sheriff's Department: Služba, ochrana a podpora našej komunity. Zistite viac o našich službách, poslaní a kariérnych príležitostiach.">
 
     <title>Los Santos Sheriff's Department - Domov</title>
     <!-- Bootstrap CSS -->
@@ -12,187 +12,14 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <!-- Custom CSS -->
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .hero {
-            position: relative;
-            background: url('images/background.png') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 150px 20px;
-            background-attachment: fixed;
-            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-            z-index: -1; /* Position the overlay behind the text */
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.6);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-top: 10px;
-        }
-
-        .hero .btn {
-            background-color: #FFDD00;
-            color: #2E3B2D;
-            border-radius: 25px;
-            padding: 10px 30px;
-            font-size: 1.2rem;
-        }
-
-        .hero .btn:hover {
-            background-color: #FBC900;
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            background-color: #2E3B2D;
-            position: sticky;
-            top: 0;
-            z-index: 1030;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-        nav a.nav-link {
-            font-weight: 500;
-        }
-        .service-card {
-            transition: transform 0.3s ease-in-out;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        .service-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        .service-card img {
-            border-radius: 15px 15px 0 0;
-        }
-        .service-title {
-            font-size: 1.5rem;
-            color: #2E3B2D;
-            margin-top: 15px;
-        }
-        footer {
-            background-color: #2E3B2D;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-        footer a {
-            color: #FFDD00;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        #map {
-            width: 100%;
-            height: 450px;
-            margin-top: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        .container h2 {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .container p {
-            font-size: 1.2rem;
-            color: #555;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            text-transform: uppercase;
-            color: grey;
-        }
-        ul li {
-            padding: 0 .5em .25em;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: .3s;
-        }
-        ul li:hover {
-            color: #fff;
-        }
-        ul li:before {
-            content: "";
-            position: absolute;
-            inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
-            background: #ce4f20; /* the color */
-            scale: 0 1;
-            transition: .3s, translate 0s .3s;
-        }
-        ul:hover li:before {
-            scale: 1;
-        }
-        ul li:hover:before {
-            translate: 0;
-            transition: .3s;
-        }
-        ul:hover li:has(~ li:hover):before {
-            translate: 100% 0;
-            transition: .2s .2s,scale 0s .4s;
-        }
-        ul:hover li:hover ~ li:before {
-            translate: -100% 0;
-            transition: .2s .2s,scale 0s .4s;
-        }
-        ul:hover li:hover ~ li:hover ~ li:before {
-            translate: 0 0;
-            transition: .2s .2s,scale 0s .4s;
-        }
-        ul:hover li:hover ~ li:hover ~ li:hover ~ li:before {
-            translate: 100% 0;
-            transition: .2s .2s,scale 0s .4s;
-        }
-
-        ul li a.active {
-            position: relative;
-            color: #fff; /* Ak chcete zmeniť farbu textu pre aktívnu položku */
-        }
-
-        ul li a.active:before {
-            content: "";
-            position: absolute;
-            inset: calc(100% - 3px) 0 0 0; /* 3px = hrúbka */
-            background: #ce4f20; /* farba čiary */
-            scale: 1 1; /* Viditeľná čiara */
-            transition: .3s;
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="./assets/css/lssd.css">
 </head>
 <body>
 
 <!-- Navigačný panel -->
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="home.html">
+        <a class="navbar-brand" href="index.html">
             <img src="images/LSSD.webp" alt="LSSD Logo" width="40" class="me-2">
             LSSD
         </a>
@@ -201,11 +28,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="home.html">DOMOV</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.html">DOMOV</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.html">VAŠE LSSD</a></li>
-                <li class="nav-item"><a class="nav-link" href="services.html">NOVINKY</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">KARIÉRA</a></li>
-                <li class="nav-item"><a class="nav-link" href="careers.html">KONTAKTUJTE NÁS</a></li>
+                <li class="nav-item"><a class="nav-link" href="news.html">NOVINKY</a></li>
+                <li class="nav-item"><a class="nav-link" href="career.html">KARIÉRA</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">KONTAKTUJTE NÁS</a></li>
             </ul>
         </div>
     </div>
